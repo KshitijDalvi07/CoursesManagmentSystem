@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="header">Courses Management System</div>
+    <div class="main-container">
+        <div class="left-panel">
+            <img src="images/logo.jpeg" alt="CM Logo">
+            <h2>Welcome</h2>
+            <p class="subheading">Please login to get started</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" pattern=".+@gmail\.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" pattern="[A-Za-z0-9]+" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+                <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+            </form>
+        </div>
+        <div class="right-panel"></div>
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            const passwordPattern = /^[A-Za-z0-9]+$/;
+
+            if (email === 'kshitijdalvi@gmail.com' && password === '1234' && emailPattern.test(email) && passwordPattern.test(password)) {
+                window.location.href = 'home.html'; // Redirect to home page
+            } else {
+                alert('Invalid email or password.');
+            }
+        });
+    </script>
+</body>
+</html>

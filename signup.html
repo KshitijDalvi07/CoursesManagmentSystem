@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="login.css"> <!-- Reusing the same CSS file for consistency -->
+</head>
+<body>
+    <div class="header">Courses Management System</div>
+    <div class="main-container">
+        <div class="left-panel">
+            <img src="logo.jpeg" alt="CM Logo">
+            <h2>Create an Account</h2>
+            <p class="subheading">Fill in the details to sign up</p>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" pattern=".+@gmail\.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" pattern="[A-Za-z0-9]+" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" pattern="[A-Za-z0-9]+" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Sign Up</button>
+                </div>
+                <p>Already have an account? <a href="login.html">Login</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('signup-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            const passwordPattern = /^[A-Za-z0-9]+$/;
+
+            if (password === confirmPassword && emailPattern.test(email) && passwordPattern.test(password)) {
+                alert('Account created successfully!'); // Placeholder action
+                window.location.href = 'login.html'; // Redirect to login page
+            } else {
+                alert('Please make sure passwords match and inputs are valid.');
+            }
+        });
+    </script>
+</body>
+</html>
